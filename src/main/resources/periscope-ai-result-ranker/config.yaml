@@ -1,0 +1,3 @@
+outputUnits: 10000
+rankingNetworkStorageStrategy:
+  class: info.magnolia.forge.periscope.rank.ml.jcr.JcrUsernameNetworkStorageStrategy

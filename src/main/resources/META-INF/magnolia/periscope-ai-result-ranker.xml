@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE module SYSTEM "module.dtd" >
+<module>
+  <name>periscope-ai-result-ranker</name>
+  <displayName>${project.name}</displayName>
+  <description>${project.description}</description>
+  <class>info.magnolia.forge.periscope.rank.ml.PeriscopeResultRankerModule</class>
+  <versionHandler>info.magnolia.forge.periscope.rank.ml.setup.PeriscopeResultRankerVersionHandler</versionHandler>
+  <version>${project.version}</version>
+
+  <components>
+    <id>main</id>
+    <component>
+      <type>info.magnolia.forge.periscope.rank.ml.RankingNetworkStorage</type>
+      <implementation>info.magnolia.forge.periscope.rank.ml.RankingNetworkStorage</implementation>
+    </component>
+    <component>
+      <type>info.magnolia.periscope.rank.ResultRankerFactory</type>
+      <implementation>info.magnolia.forge.periscope.rank.ml.NeuralNetworkResultRankerFactory</implementation>
+      <scope>singleton</scope>
+    </component>
+
+    <type-mapping>
+      <type>info.magnolia.periscope.rank.ResultRanker</type>
+      <implementation>info.magnolia.forge.periscope.rank.ml.NeuralNetworkResultRanker</implementation>
+    </type-mapping>
+  </components>
+
+  <dependencies>
+    <dependency>
+      <name>core</name>
+      <version>${magnoliaVersion}/*</version>
+    </dependency>
+    <dependency>
+      <name>config</name>
+      <version>${magnoliaVersion}/*</version>
+    </dependency>
+    <dependency>
+      <name>periscope-core</name>
+      <version>1.1/*</version>
+    </dependency>
+  </dependencies>
+
+  <repositories>
+    <repository>
+      <name>magnolia</name>
+      <workspaces>
+        <workspace>rankings</workspace>
+      </workspaces>
+      <nodeTypeFile>/mgnl-nodetypes/magnolia-ranking-nodetypes.cnd</nodeTypeFile>
+    </repository>
+  </repositories>
+</module>

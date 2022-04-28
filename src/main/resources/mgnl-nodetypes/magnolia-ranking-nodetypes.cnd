@@ -1,0 +1,4 @@
+<'mgnl'='http://www.magnolia.info/jcr/mgnl'>
+
+[mgnl:neuralNetworkRanking] > mgnl:content
+  orderable

@@ -1,0 +1,11 @@
+language: java
+jdk: openjdk9
+before_install:
+- cd /tmp # set maven up anywhere but in the module's repository, or it'll fail while trying to download unresolvable magnolia dependencies
+- mvn org.sonatype.plugins:nexus-m2settings-maven-plugin:1.6.5:download -DnexusUrl=https://nexus.magnolia-cms.com -Dusername=anonymous -Dpassword=anonymous -DtemplateId=magnolia-community-public
+- cd - # come back to module root
+script:
+- mvn clean install
+cache:
+  directories:
+  - "~/.m2/repository"
